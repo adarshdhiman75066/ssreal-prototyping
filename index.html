@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>SSRealtech | Premier Construction & Design</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&family=Material+Icons&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#003366", // Navy Blue
+                        secondary: "#ffcc00", // Construction yellow
+                        "background-light": "#ffffff",
+                        "background-dark": "#111827",
+                    },
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        sans: ["Outfit", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "4px",
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        .parallax-section {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* --- Animation Keyframes for Hero Grid --- */
+        @keyframes drawVertical {
+            0% { height: 0; opacity: 0; }
+            10% { opacity: 1; }
+            100% { height: 100%; opacity: 1; }
+        }
+        @keyframes drawHorizontal {
+            0% { width: 0; opacity: 0; }
+            10% { opacity: 1; }
+            100% { width: 100%; opacity: 1; }
+        }
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Animation Classes */
+        .animate-v-line { animation: drawVertical 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        .animate-h-line { animation: drawHorizontal 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        
+        .animate-hero-content { 
+            opacity: 0;
+            animation: fadeUp 0.8s ease-out forwards;
+            animation-delay: 0.6s;
+        }
+
+        /* Hide Scrollbar for Carousels */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+    <link rel="shortcut icon" href="assets/images/logo-tbg.png" type="image/x-icon">
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 font-sans transition-colors duration-300 relative">
+
+    <header id="navbar" class="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+
+            <div class="flex items-center gap-3">
+                <img src="assets/images/logo-tbg.png" alt="SS Realtech Logo" class="h-12 w-auto object-contain" />
+                <span class="text-2xl font-bold tracking-tight text-primary dark:text-white uppercase">
+                    SS<span class="text-slate-500 font-light"> Realtech</span>
+                </span>
+            </div>
+
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm uppercase tracking-wider">
+                <a class="text-primary dark:text-white border-b-2 border-primary" href="#">Home</a>
+                <a href="about.html" class="hover:text-primary dark:hover:text-white transition-colors">About</a>
+
+                <div class="relative group">
+                    <button class="flex items-center gap-1 hover:text-primary dark:hover:text-white transition-colors">
+                        Services
+                        <span class="material-icons text-base">expand_more</span>
+                    </button>
+
+                    <div class="absolute top-full left-0 mt-3 w-48 bg-white dark:bg-slate-900 shadow-lg border border-slate-200 dark:border-slate-800 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                        <a href="services.html#construction" class="block px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 border-b border-slate-100 dark:border-slate-800">
+                            Construction
+                        </a>
+                        <a href="services.html#electrical" class="block px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 border-b border-slate-100 dark:border-slate-800">
+                            Electrical
+                        </a>
+                        <a href="services.html#interior" class="block px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800">
+                            Interior
+                        </a>
+                    </div>
+                </div>
+
+                <a href="projects.html" class="hover:text-primary dark:hover:text-white transition-colors">Projects</a>
+                <a href="careers.html" class="hover:text-primary dark:hover:text-white transition-colors">Careers</a>
+                <a href="vendor.html" class="hover:text-primary dark:hover:text-white transition-colors">Join as Vendor</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <a href="contact.html" class="hidden md:inline-flex items-center px-5 py-2 rounded-full bg-primary text-white text-sm font-semibold hover:bg-primary/90 transition">
+                    Contact Us
+                </a>
+
+                <button id="mobileMenuBtn" class="md:hidden p-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">
+                    <span class="material-icons">menu</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="md:hidden hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+            <nav class="px-6 py-6 flex flex-col gap-4 text-sm uppercase font-medium">
+                <a href="#" class="text-primary font-semibold">Home</a>
+                <a href="about.html" class="hover:text-primary">About</a>
+
+                <div>
+                    <button id="servicesToggle" class="flex justify-between items-center w-full hover:text-primary">
+                        Services
+                        <span class="material-icons text-base">expand_more</span>
+                    </button>
+
+                    <div id="servicesMenu" class="hidden mt-3 ml-4 flex flex-col gap-3 text-xs border-l-2 border-slate-200 pl-4">
+                        <a href="services.html#construction" class="block py-1 hover:text-secondary">Construction</a>
+                        <a href="services.html#electrical" class="block py-1 hover:text-secondary">Electrical</a>
+                        <a href="services.html#interior" class="block py-1 hover:text-secondary">Interior</a>
+                    </div>
+                </div>
+
+                <a href="projects.html" class="hover:text-primary">Projects</a>
+                <a href="careers.html" class="hover:text-primary">Careers</a>
+                <a href="vendor.html" class="hover:text-primary">Join as Vendor</a>
+
+                <a href="contact.html" class="mt-4 inline-flex justify-center items-center px-5 py-3 rounded-full bg-primary text-white font-semibold">
+                    Contact Us
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="relative h-[85vh] overflow-hidden flex items-center bg-slate-900">
+        <div id="hero-bg" class="absolute inset-0 bg-cover bg-center transition-all duration-700 ease-in-out"
+            style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80');">
+            <div class="absolute inset-0 bg-slate-900/40"></div>
+        </div>
+
+        <div id="grid-v1" class="absolute top-0 bottom-0 left-1/3 w-[1px] bg-white/30 animate-v-line origin-top"></div>
+        <div id="grid-v2" class="absolute top-0 bottom-0 left-2/3 w-[1px] bg-white/30 animate-v-line origin-bottom" style="animation-delay: 0.1s"></div>
+        <div id="grid-h1" class="absolute left-0 right-0 top-1/3 h-[1px] bg-white/30 animate-h-line origin-left"></div>
+        <div id="grid-h2" class="absolute left-0 right-0 top-2/3 h-[1px] bg-white/30 animate-h-line origin-right" style="animation-delay: 0.1s"></div>
+
+        <div class="relative max-w-7xl mx-auto px-6 w-full flex justify-center items-center h-full">
+            <div id="hero-content" class="max-w-3xl bg-primary/90 p-10 md:p-16 text-white border-l-8 border-secondary animate-hero-content shadow-2xl backdrop-blur-sm">
+                <p class="uppercase tracking-[0.3em] text-sm mb-4 font-light text-secondary">Get Creative Now</p>
+                <h1 class="font-display text-4xl md:text-6xl leading-tight mb-8">
+                    SSRealtech Undoubtedly Builds Your Stunning Vision
+                </h1>
+                <div class="flex flex-wrap gap-4">
+                    <a class="bg-white text-primary px-8 py-3 font-semibold uppercase text-xs tracking-widest hover:bg-secondary hover:text-primary transition-all" href="projects.html">See All Features</a>
+                    <a class="border border-white/30 hover:bg-white/10 px-8 py-3 font-semibold uppercase text-xs tracking-widest transition-all" href="contact.html">Buy Now!</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-primary py-8 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <h2 class="text-white text-xl md:text-2xl font-light text-center md:text-left">
+                Looking for a quality constructor for your next project?
+            </h2>
+            <a href="contact.html" class="bg-white text-primary px-8 py-3 font-bold uppercase text-xs tracking-widest hover:bg-secondary transition-colors">
+                Get A Quote
+            </a>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 bg-white dark:bg-slate-900 overflow-hidden" id="services">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl font-display mb-4">Our Services</h2>
+                    <p class="text-slate-500 dark:text-slate-400 max-w-2xl">
+                        Our projects may be diverse but the results are one and the same—on schedule, on budget, with superior quality.
+                    </p>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="moveService(-1)" class="p-3 bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-primary hover:text-white transition-all rounded-sm"><span class="material-icons">chevron_left</span></button>
+                    <button onclick="moveService(1)" class="p-3 bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-primary hover:text-white transition-all rounded-sm"><span class="material-icons">chevron_right</span></button>
+                </div>
+            </div>
+
+            <div id="services-track" class="flex transition-transform duration-500 ease-out">
+                <div class="w-full md:w-1/2 flex-shrink-0 px-4">
+                    <div class="space-y-6 group">
+                        <img alt="Renovation" class="w-full h-64 object-cover mb-6 rounded-sm" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800" />
+                        <h3 class="text-xl font-bold text-primary dark:text-white">Building Renovation</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                            Depending on the scope of your project, we design your renovation in-house or partner with Builder's finest architects.
+                        </p>
+                        <a class="inline-block border-b border-primary text-xs font-bold uppercase tracking-widest pb-1 hover:text-primary/70" href="services.html#construction">Read More</a>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 flex-shrink-0 px-4">
+                    <div class="space-y-6 group">
+                        <img alt="Design" class="w-full h-64 object-cover mb-6 rounded-sm" src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800" />
+                        <h3 class="text-xl font-bold text-primary dark:text-white">Design & Build Package</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                            Integrity for what we build, the purpose of why we build. We build a house with the synchronism between design.
+                        </p>
+                        <a class="inline-block border-b border-primary text-xs font-bold uppercase tracking-widest pb-1 hover:text-primary/70" href="services.html#construction">Read More</a>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 flex-shrink-0 px-4">
+                    <div class="space-y-6 group">
+                        <img alt="Painting" class="w-full h-64 object-cover mb-6 rounded-sm" src="https://images.unsplash.com/photo-1581094794329-cd1361dcaa25?w=800" />
+                        <h3 class="text-xl font-bold text-primary dark:text-white">Painting & Tiling</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                            High quality finishing touches that make your house a home.
+                        </p>
+                        <a class="inline-block border-b border-primary text-xs font-bold uppercase tracking-widest pb-1 hover:text-primary/70" href="services.html#interior">Read More</a>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 flex-shrink-0 px-4">
+                    <div class="space-y-6 group">
+                        <img alt="Electric" class="w-full h-64 object-cover mb-6 rounded-sm" src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800" />
+                        <h3 class="text-xl font-bold text-primary dark:text-white">Electrical Wiring</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                            Certified and safe electrical installation for commercial and residential units.
+                        </p>
+                        <a class="inline-block border-b border-primary text-xs font-bold uppercase tracking-widest pb-1 hover:text-primary/70" href="services.html#electrical">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 bg-slate-50 dark:bg-slate-800/50" id="about">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                <div class="lg:col-span-4">
+                    <img alt="Construction team" class="w-full aspect-[4/3] object-cover rounded-sm shadow-md" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800" />
+                </div>
+                <div class="lg:col-span-4">
+                    <h2 class="text-3xl font-display mb-6 border-b pb-4 border-slate-200 dark:border-slate-800">What We Are?</h2>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-6">
+                        SSRealtech wants to be your builder for life. Whether we built your home or not, it's not too late for you to join our family. ReStructure is managed by a staff with over 30 years of renovation experience.
+                    </p>
+                    <a class="inline-block border-b border-primary text-xs font-bold uppercase tracking-widest pb-1 hover:text-primary/70" href="about.html">Read More</a>
+                </div>
+                <div class="lg:col-span-4">
+                    <div class="bg-primary text-white p-8 relative overflow-hidden group rounded-sm">
+                        <img alt="Consulting" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:scale-105 transition-transform duration-700" src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800" />
+                        <div class="relative z-10 text-center py-6">
+                            <p class="text-xs uppercase tracking-[0.2em] mb-2 font-light text-secondary">Get Your</p>
+                            <h3 class="text-2xl font-bold mb-4">FREE CONSULTING</h3>
+                            <a class="inline-block border border-white/40 px-6 py-2 text-[10px] uppercase font-bold tracking-widest hover:bg-white hover:text-primary transition-colors" href="contact.html">Click Here!</a>
+                        </div>
+                    </div>
+                    <p class="mt-8 text-xs text-slate-400 dark:text-slate-500 italic leading-relaxed">
+                        If you are confused? Do not worry. We offer free consultation to help you make a decision with the best creativity.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="parallax-section py-32 relative text-center" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920');">
+        <div class="absolute inset-0 bg-primary/85"></div>
+        <div class="relative z-10 max-w-4xl mx-auto px-6">
+            <h2 class="text-white text-2xl md:text-3xl font-light leading-relaxed italic">
+                "Our promise as a contractor is to build community value into every project while delivering professional expertise, exceptional customer service and quality construction."
+            </h2>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 bg-white dark:bg-slate-900" id="projects">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-end mb-12">
+                <h2 class="text-3xl font-display">Latest Projects</h2>
+                <div class="flex gap-2">
+                    <button onclick="moveProject(-1)" class="p-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 hover:bg-primary hover:text-white transition-all"><span class="material-icons">chevron_left</span></button>
+                    <button onclick="moveProject(1)" class="p-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 hover:bg-primary hover:text-white transition-all"><span class="material-icons">chevron_right</span></button>
+                </div>
+            </div>
+
+            <div class="overflow-hidden">
+                <div id="projects-track" class="flex transition-transform duration-500 ease-out">
+                    <div class="w-full md:w-1/3 flex-shrink-0 px-3">
+                        <div class="relative overflow-hidden group h-96">
+                            <img alt="Project 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800" />
+                            <div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center">
+                                <span class="material-icons text-white text-5xl mb-2">add</span>
+                                <span class="text-white font-bold uppercase tracking-widest text-sm">View Project</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/3 flex-shrink-0 px-3">
+                        <div class="relative overflow-hidden group h-96">
+                            <img alt="Project 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1600607686527-6fb886090705?w=800" />
+                            <div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center">
+                                <span class="material-icons text-white text-5xl mb-2">add</span>
+                                <span class="text-white font-bold uppercase tracking-widest text-sm">View Project</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/3 flex-shrink-0 px-3">
+                        <div class="relative overflow-hidden group h-96">
+                            <img alt="Project 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800" />
+                            <div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center">
+                                <span class="material-icons text-white text-5xl mb-2">add</span>
+                                <span class="text-white font-bold uppercase tracking-widest text-sm">View Project</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/3 flex-shrink-0 px-3">
+                        <div class="relative overflow-hidden group h-96">
+                            <img alt="Project 4" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1460317442991-0ec2aa2498ae?w=800" />
+                            <div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center">
+                                <span class="material-icons text-white text-5xl mb-2">add</span>
+                                <span class="text-white font-bold uppercase tracking-widest text-sm">View Project</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 bg-slate-50 dark:bg-slate-800/50">
+        <div class="max-w-7xl mx-auto overflow-hidden">
+            <h2 class="text-3xl font-display mb-16 text-center">Testimonials</h2>
+
+            <div id="testimonial-track" class="flex transition-transform duration-700 ease-in-out">
+                <div class="w-full md:w-1/2 flex-shrink-0 px-4">
+                    <div class="relative">
+                        <div class="bg-white dark:bg-slate-900 p-10 rounded-lg shadow-sm mb-8 relative after:content-[''] after:absolute after:top-full after:left-10 after:border-[12px] after:border-transparent after:border-t-white dark:after:border-t-slate-900">
+                            <p class="text-slate-500 dark:text-slate-400 italic text-sm leading-relaxed">
+                                "SSRealtech has an exceptional track record building on the Sacramento State campus, and we were confident in their ability."
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-4 pl-4">
+                            <img alt="Ms. Anna Terry" class="w-16 h-16 rounded-full object-cover" src="https://randomuser.me/api/portraits/women/44.jpg" />
+                            <div>
+                                <p class="font-bold text-slate-800 dark:text-white">Ms. Anna Terry</p>
+                                <p class="text-xs text-slate-400">CEO of SSRealtech Ltd.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full md:w-1/2 flex-shrink-0 px-4">
+                    <div class="relative">
+                        <div class="bg-white dark:bg-slate-900 p-10 rounded-lg shadow-sm mb-8 relative after:content-[''] after:absolute after:top-full after:left-10 after:border-[12px] after:border-transparent after:border-t-white dark:after:border-t-slate-900">
+                            <p class="text-slate-500 dark:text-slate-400 italic text-sm leading-relaxed">
+                                "We have assembled a project team comprised of the nation's top laboratory design and building professionals."
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-4 pl-4">
+                            <img alt="Mr. Frankie Kao" class="w-16 h-16 rounded-full object-cover" src="https://randomuser.me/api/portraits/men/32.jpg" />
+                            <div>
+                                <p class="font-bold text-slate-800 dark:text-white">Mr. Frankie Kao</p>
+                                <p class="text-xs text-slate-400">CEO of ThemeMove</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full md:w-1/2 flex-shrink-0 px-4">
+                    <div class="relative">
+                        <div class="bg-white dark:bg-slate-900 p-10 rounded-lg shadow-sm mb-8 relative after:content-[''] after:absolute after:top-full after:left-10 after:border-[12px] after:border-transparent after:border-t-white dark:after:border-t-slate-900">
+                            <p class="text-slate-500 dark:text-slate-400 italic text-sm leading-relaxed">
+                                "Professional, reliable, and skilled. The team communicated well throughout the entire construction process."
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-4 pl-4">
+                            <img alt="User" class="w-16 h-16 rounded-full object-cover" src="https://randomuser.me/api/portraits/men/46.jpg" />
+                            <div>
+                                <p class="font-bold text-slate-800 dark:text-white">Mr. John Doe</p>
+                                <p class="text-xs text-slate-400">Director</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 px-6 bg-white dark:bg-slate-900 border-y border-slate-100 dark:border-slate-800 overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-center mb-10">
+                <h2 class="text-2xl font-display">Clients</h2>
+            </div>
+
+            <div id="clients-track" class="flex transition-transform duration-500 items-center">
+                <div class="w-1/3 flex-shrink-0 px-4 flex justify-center opacity-40 hover:opacity-100 hover:grayscale-0 grayscale transition-all duration-300">
+                    <span class="material-icons text-6xl text-primary">architecture</span>
+                </div>
+                <div class="w-1/3 flex-shrink-0 px-4 flex justify-center opacity-40 hover:opacity-100 hover:grayscale-0 grayscale transition-all duration-300">
+                    <span class="material-icons text-6xl text-primary">precision_manufacturing</span>
+                </div>
+                <div class="w-1/3 flex-shrink-0 px-4 flex justify-center opacity-40 hover:opacity-100 hover:grayscale-0 grayscale transition-all duration-300">
+                    <span class="material-icons text-6xl text-primary">foundation</span>
+                </div>
+                <div class="w-1/3 flex-shrink-0 px-4 flex justify-center opacity-40 hover:opacity-100 hover:grayscale-0 grayscale transition-all duration-300">
+                    <span class="material-icons text-6xl text-primary">apartment</span>
+                </div>
+                <div class="w-1/3 flex-shrink-0 px-4 flex justify-center opacity-40 hover:opacity-100 hover:grayscale-0 grayscale transition-all duration-300">
+                    <span class="material-icons text-6xl text-primary">engineering</span>
+                </div>
+                <div class="w-1/3 flex-shrink-0 px-4 flex justify-center opacity-40 hover:opacity-100 hover:grayscale-0 grayscale transition-all duration-300">
+                    <span class="material-icons text-6xl text-primary">house</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-primary text-slate-300 pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+                <div class="lg:col-span-1">
+                    <div class="flex items-center gap-2 mb-6">
+                        <img src="assets/images/logo-tbg.png" alt="SS Realtech Logo" class="h-12 w-auto object-contain" />
+                        <span class="text-2xl font-bold tracking-tighter text-white uppercase">SS<span class="text-slate-400 font-light"> Realtech</span></span>
+                    </div>
+                    <p class="text-sm leading-relaxed mb-8">
+                        Integrity for what we build, the purpose of why we build. It's what SSRealtech is built upon.
+                    </p>
+                    <div class="flex gap-4">
+                        <a class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary hover:text-primary transition-colors" href="#"><span class="material-icons text-xs">facebook</span></a>
+                        <a class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary hover:text-primary transition-colors" href="#"><span class="material-icons text-sm">email</span></a>
+                    </div>
+                </div>
+                <div class="lg:col-span-2">
+                    <h3 class="text-white text-lg font-bold mb-8 border-b border-white/10 pb-4">Information</h3>
+                    <div class="grid grid-cols-2 gap-y-4">
+                        <a class="flex items-center gap-2 text-sm hover:text-white transition-colors" href="about.html"><span class="material-icons text-[10px]">chevron_right</span> About Us</a>
+                        <a class="flex items-center gap-2 text-sm hover:text-white transition-colors" href="projects.html"><span class="material-icons text-[10px]">chevron_right</span> Projects</a>
+                        <a class="flex items-center gap-2 text-sm hover:text-white transition-colors" href="services.html"><span class="material-icons text-[10px]">chevron_right</span> Services</a>
+                        <a class="flex items-center gap-2 text-sm hover:text-white transition-colors" href="careers.html"><span class="material-icons text-[10px]">chevron_right</span> Careers</a>
+                        <a class="flex items-center gap-2 text-sm hover:text-white transition-colors" href="vendor.html"><span class="material-icons text-[10px]">chevron_right</span> Join as a vendor</a>
+                        <a class="flex items-center gap-2 text-sm hover:text-white transition-colors" href="contact.html"><span class="material-icons text-[10px]">chevron_right</span> Contact Us</a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-white text-lg font-bold mb-8 border-b border-white/10 pb-4">Office Address</h3>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex gap-3">
+                            <span class="material-icons text-lg text-slate-400">location_on</span>
+                            <span>14 Tottenham Road, London</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="material-icons text-lg text-slate-400">call</span>
+                            <span>(102) 6666 8888</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="material-icons text-lg text-slate-400">mail_outline</span>
+                            <span>email@ssrealtech.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-slate-500">© Copyrights 2024 SSRealtech Construction, Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTop" onclick="scrollToTop()" class="fixed bottom-8 right-8 bg-primary text-white w-12 h-12 flex items-center justify-center rounded shadow-lg translate-y-20 transition-all duration-300 z-50 hover:bg-secondary hover:text-primary">
+        <span class="material-icons">keyboard_arrow_up</span>
+    </button>
+
+    <script>
+        // --- 1. Hero Slider & Grid Animation Reset ---
+        const images = [
+            'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80',
+            'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1920&q=80',
+            'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1920&q=80'
+        ];
+        let heroIndex = 0;
+        const bgElement = document.getElementById('hero-bg');
+
+        function changeHeroSlide() {
+            heroIndex = (heroIndex + 1) % images.length;
+            bgElement.style.backgroundImage = `url('${images[heroIndex]}')`;
+            resetHeroAnimations();
+        }
+
+        function resetHeroAnimations() {
+            const elements = [
+                document.getElementById('grid-v1'), document.getElementById('grid-v2'),
+                document.getElementById('grid-h1'), document.getElementById('grid-h2'),
+                document.getElementById('hero-content')
+            ];
+            elements.forEach(el => {
+                if(el) {
+                    el.style.animation = 'none';
+                    el.offsetHeight; /* Trigger Reflow */
+                    el.style.animation = null;
+                }
+            });
+        }
+        setInterval(changeHeroSlide, 5000);
+
+        // --- 2. Services Carousel (Show 2) ---
+        let serviceIndex = 0;
+        const totalServices = 4;
+        const visibleServices = 2;
+
+        function moveService(dir) {
+            const track = document.getElementById('services-track');
+            const maxIndex = totalServices - visibleServices;
+
+            serviceIndex += dir;
+            if (serviceIndex < 0) serviceIndex = maxIndex;
+            if (serviceIndex > maxIndex) serviceIndex = 0;
+
+            track.style.transform = `translateX(-${serviceIndex * 50}%)`;
+        }
+
+        // --- 3. Projects Carousel (Show 3) ---
+        let projectIndex = 0;
+        const totalProjects = 4;
+        const visibleProjects = 3;
+
+        function moveProject(dir) {
+            const track = document.getElementById('projects-track');
+            const maxIndex = totalProjects - visibleProjects;
+
+            projectIndex += dir;
+            if (projectIndex < 0) projectIndex = 0;
+            if (projectIndex > maxIndex) projectIndex = maxIndex;
+
+            track.style.transform = `translateX(-${projectIndex * 33.33}%)`;
+        }
+
+        // --- 4. Testimonials Auto Slider ---
+        let testIndex = 0;
+        const testTrack = document.getElementById('testimonial-track');
+        setInterval(() => {
+            testIndex++;
+            if (testIndex > 1) testIndex = 0;
+            testTrack.style.transform = `translateX(-${testIndex * 50}%)`;
+        }, 4000);
+
+        // --- 5. Clients Auto Slider ---
+        let clientIndex = 0;
+        const clientTrack = document.getElementById('clients-track');
+        setInterval(() => {
+            clientIndex++;
+            if (clientIndex > 3) clientIndex = 0;
+            clientTrack.style.transform = `translateX(-${clientIndex * 33.33}%)`;
+        }, 3000);
+
+        // --- 6. Back To Top ---
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.remove('translate-y-20');
+            } else {
+                backToTopBtn.classList.add('translate-y-20');
+            }
+        });
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // --- 7. Mobile Menu & Toggle Logic ---
+        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const servicesToggle = document.getElementById("servicesToggle");
+        const servicesMenu = document.getElementById("servicesMenu");
+
+        if(mobileMenuBtn){
+            mobileMenuBtn.addEventListener("click", () => {
+                mobileMenu.classList.toggle("hidden");
+            });
+        }
+
+        if(servicesToggle){
+            servicesToggle.addEventListener("click", () => {
+                servicesMenu.classList.toggle("hidden");
+                const icon = servicesToggle.querySelector('.material-icons');
+                icon.textContent = servicesMenu.classList.contains('hidden') ? 'expand_more' : 'expand_less';
+            });
+        }
+    </script>
+</body>
+</html>

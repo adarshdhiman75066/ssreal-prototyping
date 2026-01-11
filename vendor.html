@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Vendor Registration | SSRealtech</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&family=Material+Icons&display=swap"
+        rel="stylesheet" />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#003366", // Navy Blue
+                        secondary: "#ffcc00", // Construction yellow
+                        "background-light": "#ffffff",
+                        "background-dark": "#111827",
+                    },
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        sans: ["Outfit", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "4px",
+                    },
+                },
+            },
+        };
+    </script>
+
+    <style>
+        /* Parallax Style */
+        .parallax-section {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Fade Up Animation */
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-up {
+            animation: fadeUp 0.8s ease-out forwards;
+        }
+    </style>
+    <link rel="shortcut icon" href="assets/images/logo-tbg.png" type="image/x-icon">
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 font-sans transition-colors duration-300 relative flex flex-col min-h-screen">
+
+    <header id="navbar"
+        class="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+
+            <div class="flex items-center gap-3">
+                <img src="assets/images/logo-tbg.png" alt="SS Realtech Logo" class="h-12 w-auto object-contain" />
+                <span class="text-2xl font-bold tracking-tight text-primary dark:text-white uppercase">
+                    SS<span class="text-slate-500 font-light"> Realtech</span>
+                </span>
+            </div>
+
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm uppercase tracking-wider">
+                <a class="hover:text-primary dark:hover:text-white transition-colors" href="index.html">Home</a>
+                <a href="about.html" class="hover:text-primary dark:hover:text-white transition-colors">About</a>
+
+                <div class="relative group">
+                    <button class="flex items-center gap-1 hover:text-primary dark:hover:text-white transition-colors">
+                        Services
+                        <span class="material-icons text-base">expand_more</span>
+                    </button>
+                    <div
+                        class="absolute top-full left-0 mt-3 w-48 bg-white dark:bg-slate-900 shadow-lg border border-slate-200 dark:border-slate-800 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                        <a href="services.html#construction"
+                            class="block px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 border-b border-slate-100 dark:border-slate-800">Construction</a>
+                        <a href="services.html#electrical"
+                            class="block px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 border-b border-slate-100 dark:border-slate-800">Electrical</a>
+                        <a href="services.html#interior"
+                            class="block px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800">Interior</a>
+                    </div>
+                </div>
+
+                <a href="projects.html" class="hover:text-primary dark:hover:text-white transition-colors">Projects</a>
+                <a href="careers.html" class="hover:text-primary dark:hover:text-white transition-colors">Careers</a>
+                <a href="#" class="text-primary dark:text-white border-b-2 border-primary">Join as Vendor</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <a href="contact.html"
+                    class="hidden md:inline-flex items-center px-5 py-2 rounded-full bg-primary text-white text-sm font-semibold hover:bg-primary/90 transition">Contact
+                    Us</a>
+                <button id="mobileMenuBtn" class="md:hidden p-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">
+                    <span class="material-icons">menu</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobileMenu"
+            class="md:hidden hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+            <nav class="px-6 py-6 flex flex-col gap-4 text-sm uppercase font-medium">
+                <a href="index.html" class="hover:text-primary">Home</a>
+                <a href="about.html" class="hover:text-primary">About</a>
+                <div>
+                    <button id="servicesToggle" class="flex justify-between items-center w-full hover:text-primary">
+                        Services <span class="material-icons text-base">expand_more</span>
+                    </button>
+                    <div id="servicesMenu"
+                        class="hidden mt-3 ml-4 flex flex-col gap-3 text-xs border-l-2 border-slate-200 pl-4">
+                        <a href="services.html#construction" class="block py-1 hover:text-secondary">Construction</a>
+                        <a href="services.html#electrical" class="block py-1 hover:text-secondary">Electrical</a>
+                        <a href="services.html#interior" class="block py-1 hover:text-secondary">Interior</a>
+                    </div>
+                </div>
+                <a href="projects.html" class="hover:text-primary">Projects</a>
+                <a href="careers.html" class="hover:text-primary">Careers</a>
+                <a href="#" class="text-primary font-semibold">Join as Vendor</a>
+                <a href="contact.html"
+                    class="mt-4 inline-flex justify-center items-center px-5 py-3 rounded-full bg-primary text-white font-semibold">Contact
+                    Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="parallax-section h-[40vh] flex items-center justify-center relative"
+        style="background-image: url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1920');">
+        <div class="absolute inset-0 bg-primary/80"></div>
+        <div class="relative z-10 text-center animate-fade-up">
+            <h1 class="text-4xl md:text-6xl font-display text-white mb-4">Vendor Registration</h1>
+            <div
+                class="flex items-center justify-center gap-2 text-sm font-bold uppercase tracking-widest text-slate-300">
+                <a href="index.html" class="hover:text-secondary transition-colors">Home</a>
+                <span class="material-icons text-xs">chevron_right</span>
+                <span class="text-secondary">Vendor</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="parallax-section py-20 relative"
+        style="background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920');">
+
+        <div class="absolute inset-0 bg-primary/90 dark:bg-slate-900/95"></div>
+
+        <div class="container mx-auto px-6 relative z-10 max-w-4xl">
+            <div class="bg-white dark:bg-slate-800 p-8 md:p-12 rounded-lg shadow-2xl animate-fade-up">
+
+                <div class="text-center mb-10">
+                    <span
+                        class="text-secondary font-bold uppercase tracking-widest text-xs mb-2 block">Partnership</span>
+                    <h2 class="text-3xl font-display text-primary dark:text-white">Register As A Vendor</h2>
+                    <p class="text-slate-500 text-sm mt-2">Join our network of trusted suppliers and partners.</p>
+                </div>
+
+                <form action="#" class="space-y-8">
+
+                    <div>
+                        <h3
+                            class="text-sm font-bold uppercase text-primary dark:text-white border-b border-slate-200 dark:border-slate-700 pb-2 mb-6 flex items-center gap-2">
+                            <span class="material-icons text-base">person</span> Basic Information
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-500 mb-2">Vendor Name <span
+                                        class="text-red-500">*</span></label>
+                                <input type="text" placeholder="Enter Full Name"
+                                    class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-sm px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-500 mb-2">Email
+                                    Address</label>
+                                <input type="email" placeholder="email@domain.com"
+                                    class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-sm px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-500 mb-2">Mobile No. <span
+                                        class="text-red-500">*</span></label>
+                                <input type="tel" placeholder="+91 98765 43210"
+                                    class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-sm px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-500 mb-2">GST No. <span
+                                        class="text-red-500">*</span></label>
+                                <input type="text" placeholder="GST Identification Number"
+                                    class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-sm px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3
+                            class="text-sm font-bold uppercase text-primary dark:text-white border-b border-slate-200 dark:border-slate-700 pb-2 mb-6 flex items-center gap-2">
+                            <span class="material-icons text-base">description</span> Documents
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-500 mb-2">Pan No. <span
+                                        class="text-red-500">*</span></label>
+                                <input type="text" placeholder="PAN Number"
+                                    class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-sm px-4 py-3 text-sm mb-3 focus:outline-none focus:border-primary">
+                                <div class="flex items-center gap-3">
+                                    <label
+                                        class="cursor-pointer bg-primary hover:bg-secondary hover:text-primary text-white text-[10px] font-bold uppercase px-3 py-2 rounded-sm transition-colors">
+                                        Choose File
+                                        <input type="file" class="hidden">
+                                    </label>
+                                    <span class="text-xs text-slate-400 italic">No file chosen</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-500 mb-2">Aadhar No. <span
+                                        class="text-red-500">*</span></label>
+                                <input type="text" placeholder="Aadhar Number"
+                                    class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-sm px-4 py-3 text-sm mb-3 focus:outline-none focus:border-primary">
+                                <div class="flex items-center gap-3">
+                                    <label
+                                        class="cursor-pointer bg-primary hover:bg-secondary hover:text-primary text-white text-[10px] font-bold uppercase px-3 py-2 rounded-sm transition-colors">
+                                        Choose File
+                                        <input type="file" class="hidden">
+                                    </label>
+                                    <span class="text-xs text-slate-400 italic">No file chosen</span>
+                                </div>
+                            </div>
+
+                            <div class="md:col-span-2">
+                                <label class="block text-xs font-bold uppercase text-slate-500 mb-2">Recent
+                                    Photo</label>
+                                <div
+                                    class="flex items-center gap-3 border border-dashed border-slate-300 dark:border-slate-600 p-4 rounded-sm bg-slate-50 dark:bg-slate-900">
+                                    <label
+                                        class="cursor-pointer bg-primary hover:bg-secondary hover:text-primary text-white text-[10px] font-bold uppercase px-3 py-2 rounded-sm transition-colors">
+                                        Choose File
+                                        <input type="file" class="hidden">
+                                    </label>
+                                    <span class="text-xs text-slate-400 italic">No file chosen</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3
+                            class="text-sm font-bold uppercase text-primary dark:text-white border-b border-slate-200 dark:border-slate-700 pb-2 mb-6 flex items-center gap-2">
+                            <span class="material-icons text-base">account_balance</span> Bank Details
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-500 mb-2">Bank Name <span
+                                        class="text-red-500">*</span></label>
+                                <input type="text" placeholder="e.g. HDFC Bank"
+                                    class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-sm px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-500 mb-2">Branch <span
+                                        class="text-red-500">*</span></label>
+                                <input type="text" placeholder="e.g. MG Road Branch"
+                                    class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-sm px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-500 mb-2">Bank Account No.
+                                    <span class="text-red-500">*</span></label>
+                                <input type="text" placeholder="Account Number"
+                                    class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-sm px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-slate-500 mb-2">IFSC Code <span
+                                        class="text-red-500">*</span></label>
+                                <input type="text" placeholder="IFSC Code"
+                                    class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-sm px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-100 dark:border-slate-700">
+                        <label class="block text-xs font-bold uppercase text-slate-500 mb-4">Terms & Conditions <span
+                                class="text-red-500">*</span></label>
+                        <div class="flex items-center gap-3">
+                            <input type="checkbox" id="terms"
+                                class="form-checkbox h-4 w-4 text-primary rounded border-slate-300 focus:ring-secondary">
+                            <label for="terms"
+                                class="text-sm text-slate-600 dark:text-slate-300 hover:text-primary cursor-pointer">
+                                I Agree to the <a href="#" class="underline hover:text-secondary">Terms and
+                                    Conditions</a>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 flex flex-col md:flex-row items-center gap-6">
+                        <button type="submit"
+                            class="w-full md:w-auto px-10 bg-secondary text-primary font-bold uppercase tracking-widest text-sm py-4 rounded-sm hover:bg-primary hover:text-white transition-all shadow-md">
+                            Register Vendor
+                        </button>
+
+                        <a href="index.html"
+                            class="text-sm text-slate-500 hover:text-red-500 transition-colors border-b border-transparent hover:border-red-500 pb-1">
+                            No, thank you. I do not want to register.
+                        </a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-primary text-slate-300 pt-20 pb-10 mt-auto">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+                <div class="lg:col-span-1">
+                    <div class="flex items-center gap-2 mb-6">
+                        <img src="assets/images/logo-tbg.png" alt="SS Realtech Logo"
+                            class="h-12 w-auto object-contain" />
+                        <span class="text-2xl font-bold tracking-tighter text-white uppercase">SS<span
+                                class="text-slate-400 font-light"> Realtech</span></span>
+                    </div>
+                    <p class="text-sm leading-relaxed mb-8">
+                        Integrity for what we build, the purpose of why we build. It's what SSRealtech is built upon.
+                    </p>
+                    <div class="flex gap-4">
+                        <a class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary hover:text-primary transition-colors"
+                            href="#"><span class="material-icons text-xs">facebook</span></a>
+                        <a class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary hover:text-primary transition-colors"
+                            href="#"><span class="material-icons text-sm">email</span></a>
+                    </div>
+                </div>
+                <div class="lg:col-span-2">
+                    <h3 class="text-white text-lg font-bold mb-8 border-b border-white/10 pb-4">Information</h3>
+                    <div class="grid grid-cols-2 gap-y-4">
+                        <a class="flex items-center gap-2 text-sm hover:text-white transition-colors"
+                            href="about.html"><span class="material-icons text-[10px]">chevron_right</span> About Us</a>
+                        <a class="flex items-center gap-2 text-sm hover:text-white transition-colors"
+                            href="projects.html"><span class="material-icons text-[10px]">chevron_right</span>
+                            Projects</a>
+                        <a class="flex items-center gap-2 text-sm hover:text-white transition-colors"
+                            href="services.html"><span class="material-icons text-[10px]">chevron_right</span>
+                            Services</a>
+                        <a class="flex items-center gap-2 text-sm hover:text-white transition-colors"
+                            href="careers.html"><span class="material-icons text-[10px]">chevron_right</span>
+                            Careers</a>
+                        <a class="flex items-center gap-2 text-sm hover:text-white transition-colors"
+                            href="vendor.html"><span class="material-icons text-[10px]">chevron_right</span> Join as a
+                            vendor</a>
+                        <a class="flex items-center gap-2 text-sm hover:text-white transition-colors"
+                            href="contact.html"><span class="material-icons text-[10px]">chevron_right</span> Contact
+                            Us</a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-white text-lg font-bold mb-8 border-b border-white/10 pb-4">Office Address</h3>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex gap-3">
+                            <span class="material-icons text-lg text-slate-400">location_on</span>
+                            <span>14 Tottenham Road, London</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="material-icons text-lg text-slate-400">call</span>
+                            <span>(102) 6666 8888</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="material-icons text-lg text-slate-400">mail_outline</span>
+                            <span>email@ssrealtech.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-slate-500">© Copyrights 2024 SSRealtech Construction, Inc. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTop" onclick="scrollToTop()"
+        class="fixed bottom-8 right-8 bg-primary text-white w-12 h-12 flex items-center justify-center rounded shadow-lg translate-y-20 transition-all duration-300 z-50 hover:bg-secondary hover:text-primary">
+        <span class="material-icons">keyboard_arrow_up</span>
+    </button>
+
+    <script>
+        // Back To Top & Mobile Menu Logic
+        const backToTopBtn = document.getElementById('backToTop');
+        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const servicesToggle = document.getElementById("servicesToggle");
+        const servicesMenu = document.getElementById("servicesMenu");
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove('translate-y-20');
+            } else {
+                backToTopBtn.classList.add('translate-y-20');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener("click", () => {
+                mobileMenu.classList.toggle("hidden");
+            });
+        }
+
+        if (servicesToggle) {
+            servicesToggle.addEventListener("click", () => {
+                servicesMenu.classList.toggle("hidden");
+                const icon = servicesToggle.querySelector('.material-icons');
+                icon.textContent = servicesMenu.classList.contains('hidden') ? 'expand_more' : 'expand_less';
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Services | SS Realtech</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&family=Material+Icons&display=swap"
+        rel="stylesheet" />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#003366", // Navy Blue
+                        secondary: "#ffcc00", // Construction yellow
+                        "background-light": "#ffffff",
+                        "background-dark": "#111827",
+                    },
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        sans: ["Outfit", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "4px",
+                    },
+                },
+            },
+        };
+    </script>
+
+    <style>
+        /* Parallax Style */
+        .parallax-section {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Active Sidebar Link Style */
+        .service-link.active {
+            background-color: #003366;
+            /* Primary */
+            color: #ffffff;
+            border-left: 4px solid #ffcc00;
+            /* Secondary */
+            border-bottom: 0;
+        }
+
+        /* Mobile specific active state adjustment */
+        @media (max-width: 1024px) {
+            .service-link.active {
+                border-left: 0;
+                border-bottom: 4px solid #ffcc00;
+            }
+        }
+
+        /* Fade Animation for content switching */
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hide Scrollbar utility */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+    <link rel="shortcut icon" href="assets/images/logo-tbg.png" type="image/x-icon">
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 font-sans transition-colors duration-300 relative flex flex-col min-h-screen">
+
+    <header id="navbar"
+        class="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 h-16 md:h-20 flex items-center justify-between">
+
+            <div class="flex items-center gap-3">
+                <img src="assets/images/logo-tbg.png" alt="SS Realtech Logo"
+                    class="h-10 md:h-12 w-auto object-contain" />
+                <span class="text-xl md:text-2xl font-bold tracking-tight text-primary dark:text-white uppercase">
+                    SS<span class="text-slate-500 font-light"> Realtech</span>
+                </span>
+            </div>
+
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm uppercase tracking-wider">
+                <a class="hover:text-primary dark:hover:text-white transition-colors" href="index.html">Home</a>
+                <a href="about.html" class="hover:text-primary dark:hover:text-white transition-colors">About</a>
+
+                <div class="relative group">
+                    <button
+                        class="flex items-center gap-1 text-primary dark:text-white border-b-2 border-primary transition-colors">
+                        Services
+                        <span class="material-icons text-base">expand_more</span>
+                    </button>
+                    <div
+                        class="absolute top-full left-0 mt-3 w-48 bg-white dark:bg-slate-900 shadow-lg border border-slate-200 dark:border-slate-800 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                        <a href="services.html#construction" onclick="setTimeout(()=>location.reload(), 10)"
+                            class="block px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 border-b border-slate-100 dark:border-slate-800">Construction</a>
+                        <a href="services.html#electrical" onclick="setTimeout(()=>location.reload(), 10)"
+                            class="block px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 border-b border-slate-100 dark:border-slate-800">Electrical</a>
+                        <a href="services.html#interior" onclick="setTimeout(()=>location.reload(), 10)"
+                            class="block px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800">Interior</a>
+                    </div>
+                </div>
+
+                <a href="projects.html" class="hover:text-primary dark:hover:text-white transition-colors">Projects</a>
+                <a href="careers.html" class="hover:text-primary dark:hover:text-white transition-colors">Careers</a>
+                <a href="vendor.html" class="hover:text-primary dark:hover:text-white transition-colors">Join as
+                    Vendor</a>
+            </nav>
+
+            <button id="mobileMenuBtn" class="md:hidden p-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">
+                <span class="material-icons text-2xl">menu</span>
+            </button>
+        </div>
+
+        <div id="mobileMenu"
+            class="md:hidden hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+            <nav class="px-6 py-6 flex flex-col gap-4 text-sm uppercase font-medium">
+                <a href="index.html" class="hover:text-primary">Home</a>
+                <a href="about.html" class="hover:text-primary">About</a>
+                <div>
+                    <button id="servicesToggle" class="flex justify-between items-center w-full hover:text-primary">
+                        Services <span class="material-icons text-base">expand_more</span>
+                    </button>
+                    <div id="servicesMenu"
+                        class="hidden mt-3 ml-4 flex flex-col gap-3 text-xs border-l-2 border-slate-200 pl-4">
+                        <a href="services.html#construction" onclick="setTimeout(()=>location.reload(), 10)"
+                            class="block py-1 hover:text-secondary">Construction</a>
+                        <a href="services.html#electrical" onclick="setTimeout(()=>location.reload(), 10)"
+                            class="block py-1 hover:text-secondary">Electrical</a>
+                        <a href="services.html#interior" onclick="setTimeout(()=>location.reload(), 10)"
+                            class="block py-1 hover:text-secondary">Interior</a>
+                    </div>
+                </div>
+                <a href="projects.html" class="hover:text-primary">Projects</a>
+                <a href="careers.html" class="hover:text-primary">Careers</a>
+                <a href="vendor.html" class="hover:text-primary">Join as Vendor</a>
+                <a href="contact.html"
+                    class="mt-4 inline-flex justify-center items-center px-5 py-3 rounded-full bg-primary text-white font-semibold">Contact
+                    Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="parallax-section h-[30vh] md:h-[40vh] flex items-center justify-center relative"
+        style="background-image: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1920');">
+        <div class="absolute inset-0 bg-primary/80"></div>
+        <div class="relative z-10 text-center">
+            <h1 class="text-3xl md:text-5xl font-display text-white mb-2 md:mb-4">Service Detail</h1>
+            <div
+                class="flex items-center justify-center gap-2 text-xs md:text-sm font-bold uppercase tracking-widest text-slate-300">
+                <a href="index.html" class="hover:text-secondary transition-colors">Home</a>
+                <span class="material-icons text-[10px] md:text-xs">chevron_right</span>
+                <span class="text-secondary">Services</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 md:py-20 px-4 md:px-6 bg-white dark:bg-slate-900 flex-grow">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-start">
+
+            <div class="lg:col-span-3 space-y-8 sticky top-20 z-30">
+
+                <div
+                    class="bg-white lg:bg-slate-50 dark:lg:bg-slate-800 dark:bg-slate-900 overflow-hidden lg:rounded-sm lg:shadow-sm">
+                    <ul
+                        class="flex flex-row lg:flex-col overflow-x-auto lg:overflow-visible gap-3 lg:gap-0 pb-2 lg:pb-0 no-scrollbar">
+                        <li class="flex-shrink-0">
+                            <button onclick="switchService('civil')" id="btn-civil"
+                                class="service-link active w-auto lg:w-full text-left px-4 py-2 lg:px-6 lg:py-4 border lg:border-0 border-slate-200 lg:border-b dark:border-slate-700 rounded-full lg:rounded-none hover:bg-slate-100 dark:hover:bg-slate-700 transition-all font-medium text-xs md:text-sm uppercase tracking-wider">Civil</button>
+                        </li>
+                        <li class="flex-shrink-0">
+                            <button onclick="switchService('interior')" id="btn-interior"
+                                class="service-link w-auto lg:w-full text-left px-4 py-2 lg:px-6 lg:py-4 border lg:border-0 border-slate-200 lg:border-b dark:border-slate-700 rounded-full lg:rounded-none hover:bg-slate-100 dark:hover:bg-slate-700 transition-all font-medium text-xs md:text-sm uppercase tracking-wider">Interior</button>
+                        </li>
+                        <li class="flex-shrink-0">
+                            <button onclick="switchService('electrical')" id="btn-electrical"
+                                class="service-link w-auto lg:w-full text-left px-4 py-2 lg:px-6 lg:py-4 border lg:border-0 border-slate-200 lg:border-b dark:border-slate-700 rounded-full lg:rounded-none hover:bg-slate-100 dark:hover:bg-slate-700 transition-all font-medium text-xs md:text-sm uppercase tracking-wider">Electrical</button>
+                        </li>
+                        <li class="flex-shrink-0">
+                            <button onclick="switchService('plumbing')" id="btn-plumbing"
+                                class="service-link w-auto lg:w-full text-left px-4 py-2 lg:px-6 lg:py-4 border lg:border-0 border-slate-200 lg:border-b dark:border-slate-700 rounded-full lg:rounded-none hover:bg-slate-100 dark:hover:bg-slate-700 transition-all font-medium text-xs md:text-sm uppercase tracking-wider">Plumbing</button>
+                        </li>
+                        <li class="flex-shrink-0">
+                            <button onclick="switchService('automation')" id="btn-automation"
+                                class="service-link w-auto lg:w-full text-left px-4 py-2 lg:px-6 lg:py-4 border lg:border-0 border-slate-200 lg:border-b dark:border-slate-700 rounded-full lg:rounded-none hover:bg-slate-100 dark:hover:bg-slate-700 transition-all font-medium text-xs md:text-sm uppercase tracking-wider">Automation</button>
+                        </li>
+                        <li class="flex-shrink-0">
+                            <button onclick="switchService('network')" id="btn-network"
+                                class="service-link w-auto lg:w-full text-left px-4 py-2 lg:px-6 lg:py-4 border lg:border-0 lg:border-b-0 border-slate-200 dark:border-slate-700 rounded-full lg:rounded-none hover:bg-slate-100 dark:hover:bg-slate-700 transition-all font-medium text-xs md:text-sm uppercase tracking-wider">Network</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="hidden lg:block space-y-8">
+                    <a href="#"
+                        class="flex items-center bg-primary text-white p-6 rounded-sm shadow-sm group cursor-pointer hover:bg-secondary hover:text-primary transition-colors duration-300">
+                        <span class="material-icons text-3xl mr-4">description</span>
+                        <div>
+                            <span class="block text-xs uppercase opacity-70 mb-1">Company Info</span>
+                            <h4 class="font-bold uppercase tracking-wider">Download Brochure</h4>
+                        </div>
+                    </a>
+
+                    <div class="relative h-64 rounded-sm overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1554469384-e58fac16e23a?w=600"
+                            class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        <div
+                            class="absolute inset-0 bg-primary/80 flex flex-col items-center justify-center text-center p-6">
+                            <span class="material-icons text-white text-4xl mb-4">mail_outline</span>
+                            <h4 class="text-white font-bold text-lg uppercase tracking-wider mb-2">Free Consultation
+                            </h4>
+                            <p class="text-slate-300 text-xs mb-6">Contact us anytime for a free estimate on your
+                                project.</p>
+                            <a href="contact.html"
+                                class="px-6 py-2 border border-white text-white text-xs font-bold uppercase hover:bg-white hover:text-primary transition-colors">Contact
+                                Us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-9 min-h-[400px]" id="content-area">
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-primary text-slate-300 pt-16 pb-8 mt-auto">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div class="lg:col-span-1">
+                    <div class="flex items-center gap-2 mb-6">
+                        <img src="assets/images/logo-tbg.png" alt="SS Realtech Logo"
+                            class="h-12 w-auto object-contain" />
+                        <span class="text-2xl font-bold tracking-tighter text-white uppercase">SS<span
+                                class="text-slate-400 font-light"> Realtech</span></span>
+                    </div>
+                    <p class="text-sm leading-relaxed mb-8">
+                        Integrity for what we build, the purpose of why we build. It's what SSRealtech is built upon.
+                    </p>
+                    <div class="flex gap-4">
+                        <a class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary hover:text-primary transition-colors"
+                            href="#"><span class="material-icons text-xs">facebook</span></a>
+                        <a class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary hover:text-primary transition-colors"
+                            href="#"><span class="material-icons text-sm">email</span></a>
+                    </div>
+                </div>
+                <div class="lg:col-span-2">
+                    <h3 class="text-white text-lg font-bold mb-8 border-b border-white/10 pb-4">Information</h3>
+                    <div class="grid grid-cols-2 gap-y-4">
+                        <a class="flex items-center gap-2 text-sm hover:text-white transition-colors"
+                            href="about.html"><span class="material-icons text-[10px]">chevron_right</span> About Us</a>
+                        <a class="flex items-center gap-2 text-sm hover:text-white transition-colors"
+                            href="projects.html"><span class="material-icons text-[10px]">chevron_right</span>
+                            Projects</a>
+                        <a class="flex items-center gap-2 text-sm hover:text-white transition-colors"
+                            href="services.html"><span class="material-icons text-[10px]">chevron_right</span>
+                            Services</a>
+                        <a class="flex items-center gap-2 text-sm hover:text-white transition-colors"
+                            href="careers.html"><span class="material-icons text-[10px]">chevron_right</span>
+                            Careers</a>
+                        <a class="flex items-center gap-2 text-sm hover:text-white transition-colors"
+                            href="vendor.html"><span class="material-icons text-[10px]">chevron_right</span> Join as a
+                            vendor</a>
+                        <a class="flex items-center gap-2 text-sm hover:text-white transition-colors"
+                            href="contact.html"><span class="material-icons text-[10px]">chevron_right</span> Contact
+                            Us</a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-white text-lg font-bold mb-8 border-b border-white/10 pb-4">Office Address</h3>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex gap-3">
+                            <span class="material-icons text-lg text-slate-400">location_on</span>
+                            <span>14 Tottenham Road, London</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="material-icons text-lg text-slate-400">call</span>
+                            <span>(102) 6666 8888</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="material-icons text-lg text-slate-400">mail_outline</span>
+                            <span>email@ssrealtech.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-slate-500">© Copyrights 2024 SSRealtech Construction, Inc. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const servicesToggle = document.getElementById("servicesToggle");
+        const servicesMenu = document.getElementById("servicesMenu");
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener("click", () => {
+                mobileMenu.classList.toggle("hidden");
+            });
+        }
+
+        if (servicesToggle) {
+            servicesToggle.addEventListener("click", () => {
+                servicesMenu.classList.toggle("hidden");
+            });
+        }
+
+        // --- Services Data & Logic ---
+        const servicesData = {
+            'civil': {
+                title: 'Civil Construction',
+                desc: 'We provide top-tier civil construction services specializing in residential and commercial infrastructure. Our team ensures structural integrity, adhering to the highest safety standards.',
+                img1: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800',
+                img2: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800',
+                subTitle: 'Design & Build',
+                subDesc: 'From blueprint to reality, our design and build approach streamlines the construction process.',
+                projects: [
+                    { title: 'Skyline Heights', cat: 'Building', loc: 'London', img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400' },
+                    { title: 'Riverview Complex', cat: 'Construction', loc: 'Paris', img: 'https://images.unsplash.com/photo-1460317442991-0ec2aa2498ae?w=400' }
+                ]
+            },
+            'interior': {
+                title: 'Interior Design',
+                desc: 'Our interior design services transform spaces into aesthetic masterpieces. Whether it is a cozy home or a modern office, we balance functionality with beauty.',
+                img1: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800',
+                img2: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4f9d?w=800',
+                subTitle: 'Space Planning',
+                subDesc: 'Effective space planning is the core of our interior services. We analyze your floor plan to optimize flow and utility.',
+                projects: [
+                    { title: 'Modern Loft', cat: 'Residential', loc: 'Milan', img: 'https://images.unsplash.com/photo-1616137466211-f939a420be84?w=400' },
+                    { title: 'Co-Working Hub', cat: 'Office', loc: 'Singapore', img: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=400' }
+                ]
+            },
+            'electrical': {
+                title: 'Electrical Consultant',
+                desc: 'Safety and efficiency are paramount. From high-voltage wiring for industrial complexes to smart home grids, our certified consultants ensure robust power systems.',
+                img1: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800',
+                img2: 'https://images.unsplash.com/photo-1555664424-778a69022365?w=800',
+                subTitle: 'Power Solutions',
+                subDesc: 'We provide end-to-end power solutions including load calculation, panel installation, and emergency backup systems.',
+                projects: [
+                    { title: 'City Grid', cat: 'Infrastructure', loc: 'London', img: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=400' },
+                    { title: 'Smart Office', cat: 'Commercial', loc: 'New York', img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=400' }
+                ]
+            },
+            'default': {
+                title: 'Service Overview',
+                desc: 'We provide professional services tailored to meet your construction and renovation needs. Our expert team ensures high-quality delivery on time and within budget.',
+                img1: 'https://images.unsplash.com/photo-1581094794329-cd1361dcaa25?w=800',
+                img2: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800',
+                subTitle: 'Expert Solutions',
+                subDesc: 'Leveraging years of experience, we tackle complex challenges with innovative solutions.',
+                projects: [
+                    { title: 'Project Alpha', cat: 'Service', loc: 'Location A', img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400' },
+                    { title: 'Project Beta', cat: 'Service', loc: 'Location B', img: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=400' }
+                ]
+            }
+        };
+
+        function switchService(serviceKey) {
+            // Update Active Link State
+            document.querySelectorAll('.service-link').forEach(link => {
+                // Reset standard and mobile active classes
+                link.classList.remove('active', 'bg-primary', 'text-white', 'border-secondary', 'border-0', 'lg:border-0');
+                // Re-add default inactive classes
+                link.classList.add('border', 'border-slate-200', 'lg:border-0', 'lg:border-b');
+            });
+
+            const activeBtn = document.getElementById(`btn-${serviceKey}`);
+            if (activeBtn) {
+                // Add active classes
+                activeBtn.classList.add('active', 'bg-primary', 'text-white', 'border-0', 'lg:border-l-4', 'lg:border-secondary');
+                activeBtn.classList.remove('border-slate-200', 'hover:bg-slate-100');
+            }
+
+            // Get Data
+            const data = servicesData[serviceKey] || servicesData['default'];
+            if (!servicesData[serviceKey]) {
+                const btnText = activeBtn ? activeBtn.innerText : 'Service';
+                data.title = btnText;
+            }
+
+            // Render HTML (Mobile optimized classes added)
+            const contentHTML = `
+                <div class="mb-10 md:mb-12 animate-fade-in">
+                    <h2 class="text-2xl md:text-3xl font-display text-primary dark:text-white mb-4 md:mb-6">${data.title}</h2>
+                    <p class="text-sm md:text-base text-slate-500 dark:text-slate-400 leading-relaxed mb-6 md:mb-8">${data.desc}</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-8">
+                        <img src="${data.img1}" class="w-full h-48 md:h-64 object-cover rounded-sm shadow-md hover:scale-[1.02] transition-transform">
+                        <img src="${data.img2}" class="w-full h-48 md:h-64 object-cover rounded-sm shadow-md hover:scale-[1.02] transition-transform hidden md:block">
+                    </div>
+
+                    <h3 class="text-lg md:text-xl font-bold text-primary dark:text-white mb-2 md:mb-3">${data.subTitle}</h3>
+                    <p class="text-sm md:text-base text-slate-500 dark:text-slate-400 leading-relaxed">${data.subDesc}</p>
+                </div>
+
+                <div class="animate-fade-in" style="animation-delay: 0.1s;">
+                    <h3 class="text-xl md:text-2xl font-display text-primary dark:text-white mb-6 md:mb-8 border-b border-slate-200 dark:border-slate-700 pb-2">Related Projects</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 md:gap-y-8">
+                        ${data.projects.map(p => `
+                            <div class="flex gap-4 group cursor-pointer items-start">
+                                <div class="w-20 h-20 md:w-24 md:h-24 flex-shrink-0 overflow-hidden rounded-sm">
+                                    <img src="${p.img}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                                </div>
+                                <div>
+                                    <span class="text-[10px] uppercase font-bold text-secondary tracking-widest block mb-1">${p.cat}</span>
+                                    <h4 class="font-bold text-slate-800 dark:text-white group-hover:text-primary transition-colors mb-1 text-sm md:text-base">${p.title}</h4>
+                                    <p class="text-xs text-slate-400 line-clamp-2">${p.title} is a benchmark project located in ${p.loc}...</p>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('content-area').innerHTML = contentHTML;
+        }
+
+        // Initialize
+        window.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash.replace('#', '');
+            const map = { 'construction': 'civil', 'electrical': 'electrical', 'interior': 'interior' };
+            const serviceToLoad = map[hash] || hash || 'civil';
+
+            if (document.getElementById(`btn-${serviceToLoad}`)) {
+                switchService(serviceToLoad);
+            } else {
+                switchService('civil');
+            }
+        });
+    </script>
+</body>
+
+</html>
