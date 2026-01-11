@@ -97,12 +97,11 @@
 
     <header id="navbar"
         class="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 md:px-6 h-16 md:h-20 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
 
             <div class="flex items-center gap-3">
-                <img src="assets/images/logo-tbg.png" alt="SS Realtech Logo"
-                    class="h-10 md:h-12 w-auto object-contain" />
-                <span class="text-xl md:text-2xl font-bold tracking-tight text-primary dark:text-white uppercase">
+                <img src="assets/images/logo-tbg.png" alt="SS Realtech Logo" class="h-12 w-auto object-contain" />
+                <span class="text-2xl font-bold tracking-tight text-primary dark:text-white uppercase">
                     SS<span class="text-slate-500 font-light"> Realtech</span>
                 </span>
             </div>
@@ -112,18 +111,17 @@
                 <a href="about.html" class="hover:text-primary dark:hover:text-white transition-colors">About</a>
 
                 <div class="relative group">
-                    <button
-                        class="flex items-center gap-1 text-primary dark:text-white border-b-2 border-primary transition-colors">
+                    <button class="text-primary dark:text-white border-b-2 border-primary">
                         Services
                         <span class="material-icons text-base">expand_more</span>
                     </button>
                     <div
                         class="absolute top-full left-0 mt-3 w-48 bg-white dark:bg-slate-900 shadow-lg border border-slate-200 dark:border-slate-800 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-                        <a href="services.html#construction" onclick="setTimeout(()=>location.reload(), 10)"
+                        <a href="services.html#construction"
                             class="block px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 border-b border-slate-100 dark:border-slate-800">Construction</a>
-                        <a href="services.html#electrical" onclick="setTimeout(()=>location.reload(), 10)"
+                        <a href="services.html#electrical"
                             class="block px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 border-b border-slate-100 dark:border-slate-800">Electrical</a>
-                        <a href="services.html#interior" onclick="setTimeout(()=>location.reload(), 10)"
+                        <a href="services.html#interior"
                             class="block px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800">Interior</a>
                     </div>
                 </div>
@@ -134,9 +132,14 @@
                     Vendor</a>
             </nav>
 
-            <button id="mobileMenuBtn" class="md:hidden p-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">
-                <span class="material-icons text-2xl">menu</span>
-            </button>
+            <div class="flex items-center gap-4">
+                <a href="#"
+                    class="hidden md:inline-flex items-center px-5 py-2 rounded-full bg-primary text-white text-sm font-semibold hover:bg-primary/90 transition shadow-lg shadow-primary/30">Contact
+                    Us</a>
+                <button id="mobileMenuBtn" class="md:hidden p-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">
+                    <span class="material-icons">menu</span>
+                </button>
+            </div>
         </div>
 
         <div id="mobileMenu"
@@ -150,18 +153,15 @@
                     </button>
                     <div id="servicesMenu"
                         class="hidden mt-3 ml-4 flex flex-col gap-3 text-xs border-l-2 border-slate-200 pl-4">
-                        <a href="services.html#construction" onclick="setTimeout(()=>location.reload(), 10)"
-                            class="block py-1 hover:text-secondary">Construction</a>
-                        <a href="services.html#electrical" onclick="setTimeout(()=>location.reload(), 10)"
-                            class="block py-1 hover:text-secondary">Electrical</a>
-                        <a href="services.html#interior" onclick="setTimeout(()=>location.reload(), 10)"
-                            class="block py-1 hover:text-secondary">Interior</a>
+                        <a href="services.html#construction" class="block py-1 hover:text-secondary">Construction</a>
+                        <a href="services.html#electrical" class="block py-1 hover:text-secondary">Electrical</a>
+                        <a href="services.html#interior" class="block py-1 hover:text-secondary">Interior</a>
                     </div>
                 </div>
                 <a href="projects.html" class="hover:text-primary">Projects</a>
                 <a href="careers.html" class="hover:text-primary">Careers</a>
                 <a href="vendor.html" class="hover:text-primary">Join as Vendor</a>
-                <a href="contact.html"
+                <a href="#"
                     class="mt-4 inline-flex justify-center items-center px-5 py-3 rounded-full bg-primary text-white font-semibold">Contact
                     Us</a>
             </nav>
