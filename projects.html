@@ -8,10 +8,10 @@
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&family=Material+Icons&display=swap"
+        href="assets/css/projects1.css"
         rel="stylesheet" />
 
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="assets/js/project1.js"></script>
     <script>
         tailwind.config = {
             darkMode: "class",
@@ -44,8 +44,20 @@
             background-size: cover;
         }
 
-        /* Fade Animation for Filtering */
-        @keyframes fadeIn {
+        /* Fade Up Animation (Load/Scroll) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Filter Fade Animation */
+        @keyframes filterFadeIn {
             from {
                 opacity: 0;
                 transform: scale(0.95);
@@ -59,7 +71,7 @@
 
         .gallery-item.show {
             display: block;
-            animation: fadeIn 0.4s ease-out forwards;
+            animation: filterFadeIn 0.4s ease-out forwards;
         }
 
         .gallery-item.hide {
@@ -80,7 +92,7 @@
     class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 font-sans transition-colors duration-300 relative flex flex-col min-h-screen">
 
     <header id="navbar"
-        class="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800">
+        class="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
 
             <div class="flex items-center gap-3">
@@ -118,7 +130,7 @@
 
             <div class="flex items-center gap-4">
                 <a href="contact.html"
-                    class="hidden md:inline-flex items-center px-5 py-2 rounded-full bg-primary text-white text-sm font-semibold hover:bg-primary/90 transition">Contact
+                    class="hidden md:inline-flex items-center px-5 py-2 rounded-full bg-primary text-white text-sm font-semibold hover:bg-primary/90 transition shadow-md">Contact
                     Us</a>
                 <button id="mobileMenuBtn" class="md:hidden p-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800">
                     <span class="material-icons">menu</span>
@@ -127,7 +139,7 @@
         </div>
 
         <div id="mobileMenu"
-            class="md:hidden hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+            class="md:hidden hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 absolute w-full left-0 top-20 shadow-xl">
             <nav class="px-6 py-6 flex flex-col gap-4 text-sm uppercase font-medium">
                 <a href="index.html" class="hover:text-primary">Home</a>
                 <a href="about.html" class="hover:text-primary">About</a>
@@ -145,8 +157,7 @@
                 <a href="#" class="text-primary font-semibold">Projects</a>
                 <a href="careers.html" class="hover:text-primary">Careers</a>
                 <a href="vendor.html" class="hover:text-primary">Join as Vendor</a>
-                <a href="contact.html"
-                    class="mt-4 inline-flex justify-center items-center px-5 py-3 rounded-full bg-primary text-white font-semibold">Contact
+                <a href="contact.html" class="mt-4 text-center py-3 rounded-sm bg-primary text-white font-bold">Contact
                     Us</a>
             </nav>
         </div>
@@ -155,7 +166,7 @@
     <section class="parallax-section h-[50vh] flex items-center justify-center relative"
         style="background-image: url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=1920');">
         <div class="absolute inset-0 bg-primary/80"></div>
-        <div class="relative z-10 text-center animate-fade-up">
+        <div class="relative z-10 text-center reveal active">
             <h1 class="text-4xl md:text-6xl font-display text-white mb-4">Our Projects</h1>
             <div
                 class="flex items-center justify-center gap-2 text-sm font-bold uppercase tracking-widest text-slate-300">
@@ -169,7 +180,7 @@
     <section class="py-20 px-6 bg-white dark:bg-slate-900 flex-grow">
         <div class="max-w-7xl mx-auto">
 
-            <div class="flex flex-wrap justify-center gap-4 mb-16" id="filters">
+            <div class="flex flex-wrap justify-center gap-4 mb-16 reveal" id="filters">
                 <button
                     class="filter-btn active px-6 py-2 border border-slate-200 dark:border-slate-700 rounded-full text-sm font-bold uppercase tracking-wider hover:bg-primary hover:text-white transition-all duration-300"
                     data-filter="all">All</button>
@@ -193,7 +204,7 @@
                     data-filter="plumbing">Plumbing</button>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="gallery-grid">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 reveal" id="gallery-grid">
 
                 <div class="gallery-item group relative overflow-hidden h-80 rounded-sm cursor-pointer"
                     data-category="civil">
@@ -358,7 +369,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="pt-10 border-t border-white/10 text-center">
                 <p class="text-xs text-slate-500">© Copyrights 2024 SSRealtech Construction, Inc. All rights reserved.
                 </p>
             </div>
@@ -371,6 +382,21 @@
     </button>
 
     <script>
+        // Scroll Reveal Function
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Trigger on load
+
         // Back To Top & Mobile Menu Logic
         const backToTopBtn = document.getElementById('backToTop');
         const mobileMenuBtn = document.getElementById("mobileMenuBtn");
@@ -404,7 +430,7 @@
             });
         }
 
-        // --- FILTER LOGIC ---
+        // --- FILTER LOGIC (Improved with Animations) ---
         const filterBtns = document.querySelectorAll('.filter-btn');
         const galleryItems = document.querySelectorAll('.gallery-item');
 
@@ -418,21 +444,23 @@
                 const filterValue = btn.getAttribute('data-filter');
 
                 galleryItems.forEach(item => {
-                    // Reset animation
+                    // Reset animation class
                     item.classList.remove('show');
                     item.classList.add('hide');
 
                     if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
                         item.classList.remove('hide');
-                        // Small timeout to trigger animation
+                        // Small timeout to allow browser to register 'hide' removal before adding 'show' for animation
                         setTimeout(() => item.classList.add('show'), 10);
                     }
                 });
             });
         });
 
-        // Initialize Show All
-        galleryItems.forEach(item => item.classList.add('show'));
+        // Initialize Show All with animation
+        setTimeout(() => {
+            galleryItems.forEach(item => item.classList.add('show'));
+        }, 100);
     </script>
 </body>
 
